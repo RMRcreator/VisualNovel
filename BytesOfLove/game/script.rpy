@@ -236,12 +236,16 @@ label start:
     "This is an educational dating simulator where you build relationships with other programming languages that are represented as anime-style characters."
     "Throughout the game, these characters will immerse you into computer science and the college experience."
     "The choices you make will affect your standing with other characters and influence the events you experience."
+    $ npcs = ['Rust', 'Java', 'Cpp' ,'Python' ,'Javascript' ,'Perl', 'Html', 'Fish', 'Ruby', 'Matlab']
     default check = True
     while check:
         $ mc = renpy.input("Your name: ", length=12).strip()
         if mc.isalpha() and " " not in mc:
-            $ mc = mc.capitalize()
-            $ check = False
+            if mc.capitalize() in npcs:
+                "You cannot enter this name. Please enter a different name"
+            else:
+                $ mc = mc.capitalize()
+                $ check = False
         elif not mc:
             "Please enter a name"
         else:
